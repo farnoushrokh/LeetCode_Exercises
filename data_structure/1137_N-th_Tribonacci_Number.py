@@ -26,6 +26,7 @@ Input: n = 25
 Output: 1389537
 
 """
+# Sliding window
 class Solution:
     def tribonacci(self, n: int) -> int:
         if n==0:
@@ -37,3 +38,19 @@ class Solution:
             t_next= t0 +t1 + t2
             t0 , t1, t2 = t1, t2, t_next
         return t_next
+
+# Dynamic programming
+class Solution:
+    def tribonacci(self, n: int) -> int:
+        total_num=2
+        if n==0:
+            return 0
+        if n==1 or n==2:
+            return 1
+        dp = [0] * (n +1)
+        dp[1]=dp[2]=1
+        for i in range(3,n+1):
+            dp[i]=dp[i-1]+dp[i-2]+dp[i-3]
+        return dp[n]
+
+

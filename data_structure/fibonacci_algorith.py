@@ -15,15 +15,14 @@ print(fib(n=8))
 # memoization speeds up the execution of expensive recursive functions by storing previously calculated results
 # in a cache
 
-cache = {0: 0, 1: 1}
-
-
-def fibonacci_of(n):
-    if n in cache:
-        return cache[n]
-    else:
-        cache[n] = fibonacci_of(n - 1) + fibonacci_of(n - 2)
-        return cache[n]
-
-
-print(fibonacci_of(n=6))
+class Solution:
+    def fib(self, n: int) -> int:
+        memo=[None]*100
+        if n ==0:
+            return 0
+        if n==1:
+            return 1
+        if memo[n] is not None:
+            return memo[n]
+        memo[n] = self.fib(n-1) + self.fib(n-2)
+        return memo[n]
